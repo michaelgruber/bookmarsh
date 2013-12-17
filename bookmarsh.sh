@@ -1,30 +1,38 @@
 function bookmarsh() {
     case $1 in
-        new ) _new $2;;
-        remove ) _remove $2;;
-        here ) _here $2;;
-        list ) _list;;
-        help | --help | -h ) _help;;
-        * ) echo _help;;
+        new ) __new $2 $3;;
+        remove ) __remove $2;;
+        here ) __here $2;;
+        list ) __list;;
+        help | --help | -h ) __help;;
+        * ) __help;;
     esac
 }
 
-function _new() {
-    echo $1
+function to() {
+    echo "Goes to $1."
 }
 
-function _remove() {
-    echo $1
+function whereis() {
+    echo "Prints path of $1."
 }
 
-function _here() {
-    echo 'Here.'
+function __new() {
+    echo "Book $1 at $2."
 }
 
-function _list() {
-    echo 'Listing.'
+function __remove() {
+    echo "Removes $1."
 }
 
-function _help() {
+function __here {
+    echo "Book $1 in $(pwd)."
+}
+
+function __list {
+    echo 'Prints marsh list.'
+}
+
+function __help {
     echo 'Help.'
 }

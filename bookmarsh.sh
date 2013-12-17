@@ -9,6 +9,12 @@ function bookmarsh() {
     esac
 }
 
+# Setup directory store file
+if [ ! -n "$MARSHDIRS" ]; then
+    MARSHDIRS=~/.marshdirs
+fi
+touch $MARSHDIRS
+
 function to() {
     echo "Goes to $1."
 }
@@ -18,7 +24,7 @@ function whereis() {
 }
 
 function __new() {
-    echo "Book $1 at $2."
+    echo "export MARSHDIR_$1=\"$2\"" >> $MARSHDIRS
 }
 
 function __remove() {

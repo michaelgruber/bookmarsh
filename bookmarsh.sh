@@ -1,3 +1,9 @@
+# Setup directory store file
+if [ ! -n "$MARSHDIRS" ]; then
+    MARSHDIRS=~/.marshdirs
+fi
+touch $MARSHDIRS
+
 function bookmarsh() {
     case $1 in
         new ) __new $2 $3;;
@@ -9,15 +15,8 @@ function bookmarsh() {
     esac
 }
 
-# Setup directory store file
-if [ ! -n "$MARSHDIRS" ]; then
-    MARSHDIRS=~/.marshdirs
-fi
-touch $MARSHDIRS
-
 function to() {
     source $MARSHDIRS
-
     dir=$(eval "echo \$MARSHDIR_$1")
     cd $dir
 }

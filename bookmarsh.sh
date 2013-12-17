@@ -16,7 +16,10 @@ fi
 touch $MARSHDIRS
 
 function to() {
-    echo "Goes to $1."
+    source $MARSHDIRS
+
+    dir=$(eval "echo \$MARSHDIR_$1")
+    cd $dir
 }
 
 function whereis() {

@@ -26,7 +26,9 @@ function whereis() {
 }
 
 function __new() {
-    echo "export MARSHDIR_$1=\"$2\"" >> $MARSHDIRS
+    path=$(echo $2 | sed "s|^$HOME|\$HOME|")
+    echo "export MARSHDIR_$1=\"$path\"" >> $MARSHDIRS
+
 }
 
 function __remove() {
